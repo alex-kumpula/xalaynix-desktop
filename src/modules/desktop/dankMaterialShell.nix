@@ -8,6 +8,8 @@
       inputs.dms.homeModules.dankMaterialShell.niri
     ];
 
+    programs.niri.enable = true;
+
     programs.dankMaterialShell = {
       enable = true;
       niri = {
