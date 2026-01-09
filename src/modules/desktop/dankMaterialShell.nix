@@ -13,11 +13,10 @@
 
     home.file.".config/niri/config.kdl" = {
       text = lib.mkAfter ''
-        include optional=true "dms/alttab.kdl"
-        include optional=true "dms/binds.kdl"
-        include optional=true "dms/colors.kdl"
-        include optional=true "dms/layout.kdl"
-        include optional=true "dms/wpblur.kdl"
+        include "dms/alttab.kdl"
+        include "dms/colors.kdl"
+        include "dms/layout.kdl"
+        include "dms/wpblur.kdl"
       '';
     };
   };
