@@ -1,21 +1,24 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.xalaynixDesktop = 
-  { ... }: 
+  { lib, ... }: 
   {
     imports = [
       inputs.dms.homeModules.dankMaterialShell.default
-      # inputs.dms.homeModules.dankMaterialShell.niri
     ];
-
-    # programs.niri.enable = true;
 
     programs.dankMaterialShell = {
       enable = true;
-      # niri = {
-      #   enableKeybinds = true;   # Sets static preset keybinds
-      #   enableSpawn = true;      # Auto-start DMS with niri and cliphist, if enabled
-      # };
+    };
+
+    home.file.".config/niri" = {
+      text = lib.mkAfter ''
+        include optional=true "dms/alttab.kdl"
+        include optional=true "dms/binds.kdl"
+        include optional=true "dms/colors.kdl"
+        include optional=true "dms/layout.kdl"
+        include optional=true "dms/wpblur.kdl"
+      '';
     };
   };
 }
