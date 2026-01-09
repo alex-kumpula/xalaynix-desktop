@@ -9,7 +9,7 @@
   flake.modules.homeManager.xalaynixDesktop =
   { lib,... }:
   {
-    home.file.".config/niri" = {
+    home.file.".config/niri/config.kdl" = {
       text = lib.mkBefore ''
         input {
             keyboard {
