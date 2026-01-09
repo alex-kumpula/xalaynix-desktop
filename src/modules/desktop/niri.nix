@@ -13,10 +13,8 @@
       text = lib.mkBefore ''
         input {
             keyboard {
-                xkb {        
-                  // Enable numlock on startup, omitting this setting disables it.
-                  numlock
-                }
+                // Enable numlock on startup, omitting this setting disables it.
+                numlock
             }
         
             touchpad {
