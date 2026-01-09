@@ -11,7 +11,7 @@
       enable = true;
     };
 
-    home.file.".config/niri" = {
+    home.file.".config/niri/config.kdl" = {
       text = lib.mkAfter ''
         include optional=true "dms/alttab.kdl"
         include optional=true "dms/binds.kdl"
