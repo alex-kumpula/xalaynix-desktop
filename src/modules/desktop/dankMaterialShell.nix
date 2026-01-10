@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.xalaynixDesktop = 
-  { lib, ... }: 
+  { lib, config, pkgs, ... }: 
   {
     imports = [
       inputs.dms.homeModules.dankMaterialShell.default
@@ -17,7 +17,28 @@
         include "dms/colors.kdl"
         include "dms/layout.kdl"
         include "dms/wpblur.kdl"
+
+        // Can uncomment the line below once the next Niri 
+        // release adds support for optional includes.
+        // include optional=true "dms/binds.kdl"
       '';
     };
+
+    systemd.user.services.dms = {
+      Unit = {
+        Description = "DankMaterialShell";
+        PartOf = [ config.wayland.systemd.target ];
+        After = [ config.wayland.systemd.target ];
+      };
+
+      Service = {
+        ExecStart = lib.getExe inputs.dms.packages.${pkgs.system}.dms-shell + " run --session";
+        Restart = "on-failure";
+      };
+
+      Install.WantedBy = [ config.wayland.systemd.target ];
+    };
+
+
   };
 }
